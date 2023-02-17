@@ -20,7 +20,7 @@ export default async function getDaily() {
     }
 
     for (let j = 0; j < animes.length; j++) {
-      await laftel.search(animes[j].title).then(async (result) => {
+      await laftel.search(animes[j].title).then((result) => {
         imgs.push(result.results[0].images[0].img_url)
         ids.push(result.results[0].id)
       })
