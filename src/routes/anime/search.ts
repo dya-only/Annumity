@@ -6,24 +6,32 @@ const opts: SearchYT.YouTubeSearchOptions = {
   key: "AIzaSyBGJ0_EWoFbTmXu6q19jmqBDGOQ46hqxcY"
 }
 
+import express from 'express'
 
-export default async function getSearch(name: string) {
-  let _anime: any = {}
-  let pv: any = ''
+const router = express.Router()
 
-  await laftel.search(name).then(async (result) => {
+router.route("/search").get(async (req, res) => {
+	const params = req.query as any
+  let pv = ''
+
+  await laftel.search(params.name).then(result => {
     const [anime] = result.results
     if (anime != null || anime != undefined) {
-      await laftel.getItem(anime.id).then(async (result) => {
-        _anime = result
-        await SearchYT(`${result.name} PV`, opts, async (err, results) => {
-          if (err) return console.log(err)
+      laftel.getItem(anime.id).then(result => {
+
+        SearchYT(`${result.name} PV`, opts, (err, results) => {
+          if(err) return console.log(err)
+          
           pv = results![0].link
-          console.log(await pv)
+          res.status(200).json({ anime: result, pv: pv })
         })
+
       })
+    } else {
+      res.status(200).json({ anime: 'not found', pv: '' })
     }
   })
+})
 
-  return ({ anime: _anime, pv: pv })
-}
+
+export default router
