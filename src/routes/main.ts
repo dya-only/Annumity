@@ -1,29 +1,19 @@
 import express from 'express'
-import getDaily from './anime/daily'
-import getInfo from './anime/info'
-import getSearch from './anime/search'
-import searchRouter from './anime/search'
+
+// Anime API
+import daily from './anime/daily'
+import info from './anime/info'
+import search from './anime/search'
+
+// Database
+import create from './db/create'
 
 const router = express.Router()
-router.use("/", searchRouter)
 
-router.route("/").get((_, res) => {
-	res.send("Hello, Main!")
-})
+router.use("/daily", daily)
+router.use("/search", search)
+router.use("/info", info)
 
-router.route("/daily").get((_, res) => {
-	getDaily().then((resp) => res.json(resp))
-})
-
-router.route("/info").get((req, res) => {
-	const params = req.query as any
-	getInfo(params.name).then((resp) => res.json(resp))
-})
-
-// router.route("/search").get((req, res) => {
-// 	const params = req.query as any
-// 	getSearch(params.name).then((resp) => res.json(resp))
-// })
-
+router.use("/db/create", create)
 
 export default router

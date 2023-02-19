@@ -10,7 +10,7 @@ import express from 'express'
 
 const router = express.Router()
 
-router.route("/search").get(async (req, res) => {
+router.route("/").get(async (req, res) => {
 	const params = req.query as any
   let pv = ''
 

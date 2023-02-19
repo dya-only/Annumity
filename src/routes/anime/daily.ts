@@ -1,8 +1,11 @@
+import express from 'express'
 import Xlsx from 'read-excel-file/node'
 import laftel from 'laftel.js'
 
-export default async function getDaily() {
-  const map = {
+const router = express.Router()
+
+router.route("/").get(async (_, res) => {
+	const map = {
     Title: "title",
     Day: "week",
   }
@@ -28,5 +31,7 @@ export default async function getDaily() {
 
   })
 
-  return ({ data: animes, imgs: imgs, ids: ids })
-}
+  res.status(200).json({ data: animes, imgs: imgs, ids: ids })
+})
+
+export default router
