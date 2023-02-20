@@ -4,9 +4,9 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/src/web.js",
+    "start": "node dist/src/server.js",
     "build": "tsc -p .",
-    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/web.ts"
+    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/server.ts"
   },
   "dependencies": {
     "@react-oauth/google": "^0.7.1",
