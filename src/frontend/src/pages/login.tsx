@@ -5,8 +5,6 @@ import axios from 'axios'
 
 import Nav from './nav'
 
-const pub = process.env.PUBLIC_URL
-
 declare global {
   interface Window {
     Kakao: any
@@ -102,18 +100,18 @@ function Login() {
 
       <main className='flex-el'>
         <div className="sign-title">
-          <img className='sign-title-logo' src={`${pub}/images/logo.png`} alt='' />
+          <img className='sign-title-logo' src={`images/logo.png`} alt='' />
           Log in
         </div>
 
         <div className="oAuth">
           <button className='google-btn' onClick={() => getGoogleOAuth()}>
-            <img className='google-logo' src={`${pub}/images/google.png`} alt={''} />
+            <img className='google-logo' src={`images/google.png`} alt={''} />
             <div className="oauth-btn-text">구글로 로그인</div>
           </button>
 
           <button className='kakao-btn' onClick={() => getKakaoOAuth()}>
-            <img className='kakao-logo' src={`${pub}/images/kakao.png`} alt={''} />
+            <img className='kakao-logo' src={`images/kakao.png`} alt={''} />
             <div className="oauth-btn-text">카카오로 로그인</div>
           </button>
         </div>

@@ -35,6 +35,7 @@ function Index() {
   let PropTitle: string = ""
 
   const [openSearch, setOpenSearch] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
   let searchValue2 = ""
 
   const [week, setWeek] = useState('')
@@ -145,7 +146,7 @@ function Index() {
   }
 
   const addWish = async (id: string) => {
-    const res = await fetch(`http://localhost:3000/api/db/wish?act=add&id=${id}`, {
+    const res = await fetch(`/api/db/wish?act=add&id=${id}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -241,7 +242,7 @@ function Index() {
         <div className="window-contain">
           <div>
             <div className="search-title-window">
-              <div className="window-title">{ searchValue2 }의 검색 결과</div>
+              <div className="window-title">검색 결과</div>
               <div className="window-btns">
                 <button className='info-in-btn' onClick={() => { setOpenSearch(false); setWindowLoad(true) }}><FontAwesomeIcon className='window-btn' icon={faXmark} /></button>
               </div>
@@ -280,7 +281,7 @@ function Index() {
                         <div className="lighter">방영 요일: <strong>{ selectedInfo.distribute || '정보없음' }</strong></div>
                         <div className="lighter">출시 구분: <strong>{ selectedInfo.year_quarter }</strong></div>
                         <div className="lighter">장르: <strong>{ selectedInfo.genres[0] } · { selectedInfo.genres[1] }</strong></div>
-                        <button className='play' onClick={ () => window.open(`https://laftel.net/item/${selectedInfo.id}`) }>
+                        <button className='play-search' onClick={ () => window.open(`https://laftel.net/item/${selectedInfo.id}`) }>
                           {/* <div className="laftel-logo"></div> */}
                           <img className='laftel-logo' src={`images/laftel.png`} alt="" />
                           <div className="play-text">보러가기</div>
@@ -335,12 +336,11 @@ function Index() {
 
         {/* Search Bar */}
         <div className="search">
-          <input className='search-input' type="text" placeholder='제목으로 검색해보세요' onChange={(e: any) => searchValue2 = (e.target.value)} />
+          <input className='search-input' type="text" placeholder='제목으로 검색해보세요' onChange={(e: any) => { searchValue2 = e.target.value }} />
           <button className='search-btn' onClick={() => { setWindowLoad(true); getSearch(); setOpenSearch(true) } }>
             <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
           </button>
         </div>
-          <div className="">{ searchValue2 }</div>
 
         <div className="cards">
           <div className="tests">

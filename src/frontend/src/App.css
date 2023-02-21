@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
 html,
 body {
   margin: 0;
   padding: 0;
   background: #ffffff;
-  /* background: #1B1A25; */
-  /* background: #202124; */
-  /* color: white; */
   color: rgb(22, 22, 22);
   font-family: 'Quicksand', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+
   transition: all 1s;
   overflow-x: hidden;
 
@@ -176,9 +177,11 @@ body {
 } */
 
 .btn {
-  /* background: #2f78ff; */
-  background: transparent;
-  color: rgb(22, 22, 22);
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #2370ff;
+  color: white;
+  /* background: transparent; */
+  /* color: rgb(22, 22, 22); */
   font-size: 16px;
   font-weight: bold;
   padding: 5px;
@@ -245,16 +248,16 @@ body {
 
   display: flex;
   justify-content: space-around;
-  background: rgb(201, 209, 255);
-  /* background-color: hsla(0, 0%, 100%, 0.8);
-  backdrop-filter: blur(20px); */
-  border-bottom: solid 1px;
+  background: white;
+  /* background-color: hsla(0, 0%, 100%, 0.8); */
+  backdrop-filter: blur(20px);
+  /* border-bottom: solid 1px; */
   border-color: #cccccc;
   margin-top: -140px;
 }
 
 .colored {
-  color: #2f78ff;
+  color: #2370ff;
 }
 .colored-2 {
   font-size: 28px;
@@ -323,7 +326,7 @@ body {
   margin: 40px;
   border-radius: 20px;
   cursor: pointer;
-  border: 1px solid #d8d8d8;
+  /* border: 1px solid #d8d8d8; */
   /* box-shadow:  10px 10px 40px #bebebe,
     -20px -20px 60px #ffffff; */
 
@@ -333,7 +336,7 @@ body {
   justify-content: center;
 
   outline: 0;
-  /* border: 0; */
+  border: 0;
   background: transparent;
   /* background: #1B1A25; */
   /* background: #202124; */
@@ -394,6 +397,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .card-week {
@@ -634,6 +638,21 @@ body {
   object-fit: contain;
   margin-right: 6px;
 }
+.play-search {
+  outline: 0;
+  border: 0;
+
+  margin: 10px 10px 0px 0px;
+  border-radius: 8px;
+  padding: 8px 8px 8px 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #6e58ff3d;
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+}
 
 .search {
   width: 100vw;
@@ -652,6 +671,7 @@ body {
   border-radius: 20px 0px 0px 20px;
 
   background: #e8e8e9;
+  font-weight: bold;
 
   outline: none;
   border: none;
@@ -669,7 +689,7 @@ body {
 .search-icon {
   font-size: 20px;
   margin-right: 10px;
-  color:rgb(37, 131, 255);
+  color: #2370ff;
 }
 
 .search-card-contain {
@@ -750,7 +770,7 @@ body {
   margin-left: -10px;
   z-index: 30;
   background: rgb(25,27,42);
-  background: linear-gradient(90deg, rgba(25,27,42,1) 45%, rgba(0,247,255,0) 100%); 
+  background: linear-gradient(90deg, rgba(25,27,42,1) 20%, rgba(0,247,255,0) 100%);
 }
 .search-ui {
   padding-left: 10%;
@@ -781,7 +801,8 @@ body {
   width: 400px;
 }
 .search-tag {
-  background: #282c44;
+  background: #282c445e;
+  backdrop-filter: blur(20px);
   padding: 4px;
   border-radius: 5px;
   margin: 5px;

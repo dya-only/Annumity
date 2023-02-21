@@ -1,3 +1,4 @@
+import express from 'express'
 import laftel from 'laftel.js'
 import SearchYT from 'youtube-search'
 
@@ -5,8 +6,6 @@ const opts: SearchYT.YouTubeSearchOptions = {
   maxResults: 1,
   key: "AIzaSyBGJ0_EWoFbTmXu6q19jmqBDGOQ46hqxcY"
 }
-
-import express from 'express'
 
 const router = express.Router()
 
