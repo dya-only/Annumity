@@ -18,28 +18,18 @@ function Login() {
   const getGoogleOAuth = useGoogleLogin({
     onSuccess: async (tokenResponse: any) => {
 
-      await axios.get("https://www.googleapis.com/oauth2/v2/userinfo", {
+      axios.get("https://www.googleapis.com/oauth2/v2/userinfo", {
         headers: {
           Authorization: `Bearer ${tokenResponse.access_token}`,
         },
       })
       .then(async (res: { data: { name: string, email: string } }) => {
-        const db_res = await axios.get(`http://localhost:3000/api/db/create?email=${res.data.email}&name=${res.data.name}`)
-        const data = await db_res.data
+        await axios.get(`http://localhost:3000/api/db/create?email=${res.data.email}&name=${res.data.name}`)
 
-        if (!await data.res) {
-          alert("다시 만나서 반가워요, " + res.data.name + "님!")
-          sessionStorage.setItem('Account', res.data.name)
-          sessionStorage.setItem('Email', res.data.email)
-          navigate('/')
-        } else {
-          alert("환영합니다, " + res.data.name + "님!")
-          sessionStorage.setItem('Account', res.data.name)
-          sessionStorage.setItem('Email', res.data.email)
-          navigate('/')
-        }
-
-        // alert(`name: ${res.data.name}\nemail: ${res.data.email}`)
+        alert("환영합니다, " + res.data.name + "님!")
+        sessionStorage.setItem('Account', res.data.name)
+        sessionStorage.setItem('Email', res.data.email)
+        navigate('/')
       }).catch(() => {
         alert("oAuth token expired")
       })
@@ -98,7 +88,9 @@ function Login() {
 
       <Nav />
 
-      <main className='flex-el'>
+      <img className='bg-login' src={`images/bg2.png`} alt="" />
+
+      <main className='flex-el login-menu'>
         <div className="sign-title">
           <img className='sign-title-logo' src={`images/logo.png`} alt='' />
           Log in
@@ -110,10 +102,15 @@ function Login() {
             <div className="oauth-btn-text">구글로 로그인</div>
           </button>
 
-          <button className='kakao-btn' onClick={() => getKakaoOAuth()}>
+          {/* <button className='github-btn' onClick={() => getGithubOAuth()}> */}
+            {/* <img className='google-logo' src={`images/google.png`} alt={''} /> */}
+            {/* <div className="oauth-btn-text">깃허브로 로그인</div>
+          </button> */}
+
+          {/* <button className='kakao-btn' onClick={() => getKakaoOAuth()}>
             <img className='kakao-logo' src={`images/kakao.png`} alt={''} />
             <div className="oauth-btn-text">카카오로 로그인</div>
-          </button>
+          </button> */}
         </div>
 
         { account ?

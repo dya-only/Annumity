@@ -10,22 +10,23 @@ router.route("/").get(async (req, res) => {
   // CREATE DB TABLE
   // db.run('CREATE TABLE user(id integer primary key autoincrement, name text, email text unique, wish_id text, watched_id text)')
 
+  // DELETE DB TABLE
+  // db.run('DROP TABLE user')
+
   let sql = `SELECT * FROM user WHERE email="${params.email}"`
-  let returnValue = false
 
-    db.all(sql, [], (e, rows) => {
-      if (e) console.log(e)
+  db.all(sql, [], (e, rows) => {
+    if (e) console.log(e)
 
-      if (rows.length == 0) {
-        db.run(`INSERT INTO user(name, email, wish_id, watched_id) VALUES(\"${params.name}\", \"${params.email}\", \"[]\", \"[]\")`, (e) => {
-          if (e) console.log(e)
-          returnValue = true
-        })
-      }
-    })
-    db.close()
+    if (rows.length == 0) {
+      db.run(`INSERT INTO user(name, email, wish_id, watched_id) VALUES(\"${params.name}\", \"${params.email}\", \"[]\", \"[]\")`, (e) => {
+        if (e) console.log(e)
+      })
+    }
+  })
+  db.close()
 
-    res.status(200).json({ res: returnValue })
+  res.status(200).json({ message: 'successful' })
 })
 
 export default router
