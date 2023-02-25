@@ -13,10 +13,14 @@ router.route("/").get(async (req, res) => {
   db.all(sqlREAD, [], (e, rows) => {
     if (e) throw e
 
+    let isAlreadyAdded: boolean = false
     wishID = JSON.parse(rows[0].wish_id)
-    console.log(wishID.includes(params.id))
+    
+    for (let i = 0; i < wishID.length; i++) {
+      if (wishID[i] == parseInt(params.id)) isAlreadyAdded = true
+    }
 
-    if (!wishID.includes(params.id)) {
+    if (!isAlreadyAdded) {
 
       console.log('added')
       wishID.push(parseInt(params.id))
@@ -26,7 +30,6 @@ router.route("/").get(async (req, res) => {
       db.run(sql, (e) => {
         if (e) return console.error(e.message)
     
-        console.log('updated', wishID)
       })
     } else {
       console.log('already exists')

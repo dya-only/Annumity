@@ -651,7 +651,9 @@ body {
 
   margin: 10px 10px 0px 0px;
   border-radius: 8px;
-  padding: 8px 8px 8px 8px;
+  padding: 0px 8px 0px 8px;
+  /* width: 110px; */
+  height: 36px;
 
   display: flex;
   justify-content: center;
@@ -675,7 +677,8 @@ body {
 
   margin: 10px 10px 0px 0px;
   border-radius: 8px;
-  padding: 8px 8px 8px 8px;
+  padding: 0px 8px 0px 8px;
+  height: 36px;
 
   display: flex;
   justify-content: center;

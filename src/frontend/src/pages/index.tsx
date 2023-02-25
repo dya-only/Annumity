@@ -299,11 +299,17 @@ function Index() {
                         <div className="lighter">방영 요일: <strong>{ selectedInfo.distribute || '정보없음' }</strong></div>
                         <div className="lighter">출시 구분: <strong>{ selectedInfo.year_quarter }</strong></div>
                         <div className="lighter">장르: <strong>{ selectedInfo.genres[0] } · { selectedInfo.genres[1] }</strong></div>
-                        <button className='play-search' onClick={ () => window.open(`https://laftel.net/item/${selectedInfo.id}`) }>
-                          {/* <div className="laftel-logo"></div> */}
-                          <img className='laftel-logo' src={`images/laftel.png`} alt="" />
-                          <div className="play-text">보러가기</div>
-                        </button>
+                        <div className="card-btn-contain">
+                          <button className='play-search' onClick={ () => window.open(`https://laftel.net/item/${selectedInfo.id}`) }>
+                            {/* <div className="laftel-logo"></div> */}
+                            <img className='laftel-logo' src={`images/laftel.png`} alt="" />
+                            <div className="play-text">보러가기</div>
+                          </button>
+                          <button className='play-search' onClick={ () => addWish(selectedInfo.id) }>
+                            {/* <div className="laftel-logo"></div> */}
+                            <div className="play-text">보고싶다</div>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -342,6 +348,8 @@ function Index() {
       : null }
 
       <Nav />
+
+      {/* Added Success Notice Window */}
 
       <main>
         {/* <div className="bg"></div> */}
