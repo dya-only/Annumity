@@ -37,58 +37,59 @@ function Login() {
     onError: (errorResponse: any) => console.log(errorResponse)
   })
 
-  const getKakaoOAuth = () => {
-    const jsKey = "1f4c19bd0b7f3b52583a8dc2acd8ac99"
-    const Kakao = window.Kakao
+  // 카카오 OAuth 로그인 - 이메일 제공이 힘든 관계로 삭제
+  // const getKakaoOAuth = () => {
+  //   const jsKey = "1f4c19bd0b7f3b52583a8dc2acd8ac99"
+  //   const Kakao = window.Kakao
     
-    if (Kakao && !Kakao.isInitialized()) {
-      Kakao.init(jsKey)
-      console.log(Kakao.isInitialized())
-    }
+  //   if (Kakao && !Kakao.isInitialized()) {
+  //     Kakao.init(jsKey)
+  //     console.log(Kakao.isInitialized())
+  //   }
 
-    Kakao.Auth.login({
-      success() {
-        Kakao.API.request({
-          url: "/v2/user/me",
-          async success(res: any) {
-            const kakaoAccount = res.kakao_account
+  //   Kakao.Auth.login({
+  //     success() {
+  //       Kakao.API.request({
+  //         url: "/v2/user/me",
+  //         async success(res: any) {
+  //           const kakaoAccount = res.kakao_account
 
-            // const db_res = await axios.get(`http://localhost:3000/api/db/create?email=${res.data.email}&name=${res.data.name}`)
-            // const data = await db_res.data
+  //           const db_res = await axios.get(`http://localhost:3000/api/db/create?email=${res.data.email}&name=${res.data.name}`)
+  //           const data = await db_res.data
 
-            // if (!await data.res) {
-            //   alert("다시 만나서 반가워요, " + res.data.name + "님!")
-            //   sessionStorage.setItem('Account', res.data.name)
-            //   sessionStorage.setItem('Email', res.data.email)
-            //   navigate('/')
-            // } else {
-            //   alert("환영합니다, " + res.data.name + "님!")
-            //   sessionStorage.setItem('Account', res.data.name)
-            //   sessionStorage.setItem('Email', res.data.email)
-            //   navigate('/')
-            // }
+  //           if (!await data.res) {
+  //             alert("다시 만나서 반가워요, " + res.data.name + "님!")
+  //             sessionStorage.setItem('Account', res.data.name)
+  //             sessionStorage.setItem('Email', res.data.email)
+  //             navigate('/')
+  //           } else {
+  //             alert("환영합니다, " + res.data.name + "님!")
+  //             sessionStorage.setItem('Account', res.data.name)
+  //             sessionStorage.setItem('Email', res.data.email)
+  //             navigate('/')
+  //           }
 
-            console.log('login successful by kakao, ' + await kakaoAccount.profile.id)
-            sessionStorage.setItem('Account', kakaoAccount.profile.nickname)
-            navigate('/')
-          },
-          fail(error: any) {
-            console.log(error)
-          },
-        })
-      },
-      fail(error: any) {
-        console.log(error)
-      },
-    })
-  }
+  //           console.log('login successful by kakao, ' + await kakaoAccount.profile.id)
+  //           sessionStorage.setItem('Account', kakaoAccount.profile.nickname)
+  //           navigate('/')
+  //         },
+  //         fail(error: any) {
+  //           console.log(error)
+  //         },
+  //       })
+  //     },
+  //     fail(error: any) {
+  //       console.log(error)
+  //     },
+  //   })
+  // }
 
   return (
     <Fragment>
 
       <Nav />
 
-      <img className='bg-login' src={`images/bg2.png`} alt="" />
+      {/* <img className='bg-login' src={`images/bg2.png`} alt="" /> */}
 
       <main className='flex-el login-menu'>
         <div className="sign-title">

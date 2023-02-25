@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route("/").get(async (req, res) => {
   const params = req.query as any
-  const db = new sqlite3.Database('db/dev.db')
+  const db = new sqlite3.Database('db/user.db')
   let wishID: number[] = []
 
   let sqlREAD = `SELECT * FROM user WHERE email=\"${params.email || ''}\"`
@@ -14,19 +14,22 @@ router.route("/").get(async (req, res) => {
     if (e) throw e
 
     wishID = JSON.parse(rows[0].wish_id)
-    if (wishID.includes(params.id.toString())) {
-      // wishID.push(parseInt(params.id))
+    console.log(wishID.includes(params.id))
+
+    if (!wishID.includes(params.id)) {
+
+      console.log('added')
+      wishID.push(parseInt(params.id))
   
-      // let sql = `UPDATE user SET wish_id="${JSON.stringify(wishID)}" WHERE email="${rows[0].email}"`
+      let sql = `UPDATE user SET wish_id="${JSON.stringify(wishID)}" WHERE email="${rows[0].email}"`
     
-      // db.run(sql, (e) => {
-      //   if (e) return console.error(e.message)
+      db.run(sql, (e) => {
+        if (e) return console.error(e.message)
     
-      //   console.log('updated', wishID)
-      // })
-      console.log('already exists')
+        console.log('updated', wishID)
+      })
     } else {
-      console.log('add')
+      console.log('already exists')
     }
       
   })

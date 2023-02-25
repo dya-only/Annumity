@@ -117,10 +117,10 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 30;
-  color: white;
+  /* color: white; */
 }
 .sign-title-logo {
-  /* filter: invert(); */
+  filter: invert();
   width: 20px;
   margin-right: 5px;
   margin-top: 3px;
@@ -132,7 +132,8 @@ body {
   margin-right: 10px;
 }
 .google-btn {
-  background: rgb(248, 248, 248);
+  background: rgb(255, 255, 255);
+  box-shadow: 11px 13px 21px 8px rgba(0,0,0,0.1);
   color:rgba(27, 26, 37, 0.85);
   font-weight: bold;
   font-size: 15px;

@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowRight, faMagnifyingGlass, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import ReactPlayer from 'react-player'
@@ -8,6 +9,8 @@ import Nav from './nav'
 import Loading from './loading'
 
 function Index() {
+  const navigate = useNavigate()
+
   const [daily, setDaily] = useState({
     data: [], images: [], ids: []
   })
@@ -145,8 +148,8 @@ function Index() {
     }
   }
 
-  const addWish = async (id: string) => {
-    const res = await fetch(`/api/db/wish?act=add&id=${id}`, {
+  const getDelDB = async () => {
+    const res = await fetch(`/api/db/del`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -155,6 +158,21 @@ function Index() {
 
     const data = await res.json()
     console.log(data)
+  }
+
+  const addWish = async (id: string) => {
+    if (sessionStorage.getItem('Email') != '' && sessionStorage.getItem('Email') != null) {
+      const res = await fetch(`/api/db/wish?act=add&id=${id}&email=${sessionStorage.getItem('Email')}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      const data = await res.json()
+      console.log(data)
+    } else { alert('로그인을 진행해주세요.'); navigate('/') }
+
   }
 
   const getDaily = async () => {
@@ -371,6 +389,8 @@ function Index() {
         </div>
 
       </main>
+
+      <button onClick={getDelDB}>db 데이터 제거</button>
     </Fragment>
   )
 }
