@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark, faArrowRight, faMagnifyingGlass, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faArrowRight, faMagnifyingGlass, faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons'
 import ReactPlayer from 'react-player'
 import axios from 'axios'
 
@@ -353,7 +353,7 @@ function Index() {
 
       <main>
         {/* <div className="bg"></div> */}
-        <img className='bg' src={`images/bg2.png`} alt="" />
+        <img className='bg' src={`images/bocchi-4x-width.png`} alt="" />
 
         <div className="bg-info">
           <div className="bg-info-text">이번 분기의 <span className='colored'>인기</span> 애니를 확인해보세요</div>
@@ -398,7 +398,7 @@ function Index() {
 
       </main>
 
-      <button onClick={getDelDB}>db 데이터 제거</button>
+      {/* <button onClick={getDelDB}>db 데이터 제거</button> */}
     </Fragment>
   )
 }
