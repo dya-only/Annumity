@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark, faArrowRight, faMagnifyingGlass, faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faArrowRight, faMagnifyingGlass, faArrowLeft, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 import ReactPlayer from 'react-player'
 import axios from 'axios'
 
@@ -240,9 +240,13 @@ function Index() {
                           <img className='laftel-logo' src={`images/laftel.png`} alt="" />
                           <div className="play-text">보러가기</div>
                         </button>
-                        <button className='play' onClick={ () => addWish(selectedInfo.id) }>
-                          {/* <div className="laftel-logo"></div> */}
+                        <button className='wish' onClick={ () => addWish(selectedInfo.id) }>
+                          <FontAwesomeIcon className='wish-logo' icon={faPlus} />
                           <div className="play-text">보고싶다</div>
+                        </button>
+                        <button className='wish' onClick={ () => addWish(selectedInfo.id) }>
+                          <FontAwesomeIcon className='wish-logo' icon={faCheck} />
+                          <div className="play-text">정주행 완료</div>
                         </button>
                       </div>
                     </div>
@@ -305,10 +309,15 @@ function Index() {
                             <img className='laftel-logo' src={`images/laftel.png`} alt="" />
                             <div className="play-text">보러가기</div>
                           </button>
-                          <button className='play-search' onClick={ () => addWish(selectedInfo.id) }>
+                          <button className='wish-search' onClick={ () => addWish(selectedInfo.id) }>
                             {/* <div className="laftel-logo"></div> */}
+                            <FontAwesomeIcon className='wish-logo' icon={faPlus} />
                             <div className="play-text">보고싶다</div>
                           </button>
+                          <button className='wish-search' onClick={ () => addWish(selectedInfo.id) }>
+                          <FontAwesomeIcon className='wish-logo' icon={faCheck} />
+                          <div className="play-text">정주행 완료</div>
+                        </button>
                         </div>
                       </div>
                     </div>

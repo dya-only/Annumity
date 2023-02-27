@@ -11,6 +11,9 @@ function Nav() {
   const [signStatus, setSignStatus] = useState('user-name-white')
   const [iconStatus, setIconStatus] = useState('icon-white')
   const [iconStatusOut, setIconStatusOut] = useState('icon-out-white')
+  
+  const [dropDownStatus, setDropDownStatus] = useState('dropdown-leave')
+
   const [AccName, setAccName] = useState(typeof window !== 'undefined' ? sessionStorage.getItem('Account') : null)
 
   const handleFollow = () => {
@@ -57,9 +60,13 @@ function Nav() {
       <Link to={'/login'}>
         <FontAwesomeIcon className={ iconStatus } icon={faRightToBracket} />
       </Link>
-      : <button className='signOut' onClick={() => { sessionStorage.setItem("Account", ""); setAccName(""); sessionStorage.setItem("Email", "") }}>
+      : <button className='signOut' onMouseEnter={() => { setDropDownStatus('dropdown-enter') }} onMouseLeave={() => { setDropDownStatus('dropdown-leave') }}>
           <div className={ signStatus }>{ AccName }</div>
-          <FontAwesomeIcon className={ iconStatusOut } icon={faRightFromBracket} />
+          {/* <FontAwesomeIcon className={ iconStatusOut } icon={faRightFromBracket} /> */}
+          <div className={ dropDownStatus }>
+            <div className="dropdown-mypage dropdown-item">마이페이지</div>
+            <div className="dropdown-logout dropdown-item" onClick={() => { sessionStorage.setItem("Account", ""); setAccName(""); sessionStorage.setItem("Email", "") }}>로그아웃</div>
+          </div>
         </button> }
     </nav>
   )
