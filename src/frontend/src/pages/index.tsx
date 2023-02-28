@@ -43,7 +43,8 @@ function Index() {
   const [week, setWeek] = useState('')
   const [Load, setLoad] = useState(true)
   const [windowLoad, setWindowLoad] = useState(true)
-  const [notiStatus, setNotiStatus] = useState('')
+  const [notiStatus, setNotiStatus] = useState('notice-contain-hidden')
+  const [notiValue, setNotiValue] = useState('요청을 완료했습니다.')
   const horizontalScrollRef = useRef<null | any>(null)
 
   const handleNextButtonClick = (nextType: 'prev' | 'next') => {
@@ -172,10 +173,14 @@ function Index() {
       const data = await res.json()
       console.log(data.message)
 
-      setNotiStatus(data.message)
-      
-      setTimeout(() => { setNotiStatus('notice-off') }, 2000)
-    } else { navigate('/') }  // alert('로그인을 진행해주세요.');
+      setNotiValue('요청을 완료했습니다.')
+      setNotiStatus('notice-contain')
+      setTimeout(() => { setNotiStatus('notice-contain-hidden') }, 2000)
+    } else { 
+      setNotiValue('로그인이 필요합니다.')
+      setNotiStatus('notice-contain')
+      setTimeout(() => { setNotiStatus('notice-contain-hidden') }, 2000)
+    }
 
   }
 
@@ -190,7 +195,15 @@ function Index() {
 
       const data = await res.json()
       console.log(data.message)
-    } else { navigate('/') }
+
+      setNotiValue('요청을 완료했습니다.')
+      setNotiStatus('notice-contain')
+      setTimeout(() => { setNotiStatus('notice-contain-hidden') }, 2000)
+    } else { 
+      setNotiValue('로그인이 필요합니다.')
+      setNotiStatus('notice-contain')
+      setTimeout(() => { setNotiStatus('notice-contain-hidden') }, 2000)
+    }
 
   }
 
@@ -225,7 +238,9 @@ function Index() {
     Load ? <Loading /> :
     <Fragment>
 
-      <div className={ notiStatus }>요청을 완료하였습니다.</div>
+      <div className={ notiStatus }>
+        <div className="notice-window">{ notiValue }</div>
+      </div>
 
       {/* Daily Window */}
       { open ?
