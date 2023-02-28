@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowRight, faMagnifyingGlass, faArrowLeft, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 import ReactPlayer from 'react-player'
-import axios from 'axios'
 
 import Nav from './nav'
 import Loading from './loading'
@@ -44,6 +43,7 @@ function Index() {
   const [week, setWeek] = useState('')
   const [Load, setLoad] = useState(true)
   const [windowLoad, setWindowLoad] = useState(true)
+  const [notiStatus, setNotiStatus] = useState('')
   const horizontalScrollRef = useRef<null | any>(null)
 
   const handleNextButtonClick = (nextType: 'prev' | 'next') => {
@@ -148,17 +148,17 @@ function Index() {
     }
   }
 
-  const getDelDB = async () => {
-    const res = await fetch(`/api/db/del`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+  // const getDelDB = async () => {
+  //   const res = await fetch(`/api/db/del`, {
+  //     method: 'GET',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
 
-    const data = await res.json()
-    console.log(data)
-  }
+  //   const data = await res.json()
+  //   console.log(data)
+  // }
 
   const addWish = async (id: string) => {
     if (sessionStorage.getItem('Email') != '' && sessionStorage.getItem('Email') != null) {
@@ -170,8 +170,27 @@ function Index() {
       })
 
       const data = await res.json()
-      console.log(data)
-    } else { alert('로그인을 진행해주세요.'); navigate('/') }
+      console.log(data.message)
+
+      setNotiStatus(data.message)
+      
+      setTimeout(() => { setNotiStatus('notice-off') }, 2000)
+    } else { navigate('/') }  // alert('로그인을 진행해주세요.');
+
+  }
+
+  const addWatched = async (id: string) => {
+    if (sessionStorage.getItem('Email') != '' && sessionStorage.getItem('Email') != null) {
+      const res = await fetch(`/api/db/watched?act=add&id=${id}&email=${sessionStorage.getItem('Email')}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      const data = await res.json()
+      console.log(data.message)
+    } else { navigate('/') }
 
   }
 
@@ -205,6 +224,10 @@ function Index() {
   return (
     Load ? <Loading /> :
     <Fragment>
+
+      <div className={ notiStatus }>요청을 완료하였습니다.</div>
+
+      {/* Daily Window */}
       { open ?
         <div className="window-contain">
           <div>
@@ -244,7 +267,7 @@ function Index() {
                           <FontAwesomeIcon className='wish-logo' icon={faPlus} />
                           <div className="play-text">보고싶다</div>
                         </button>
-                        <button className='wish' onClick={ () => addWish(selectedInfo.id) }>
+                        <button className='wish' onClick={ () => addWatched(selectedInfo.id) }>
                           <FontAwesomeIcon className='wish-logo' icon={faCheck} />
                           <div className="play-text">정주행 완료</div>
                         </button>
@@ -260,6 +283,7 @@ function Index() {
         </div>
       : null }
 
+      {/* Search Window */}
       { openSearch ?
         <div className="window-contain">
           <div>
@@ -314,7 +338,7 @@ function Index() {
                             <FontAwesomeIcon className='wish-logo' icon={faPlus} />
                             <div className="play-text">보고싶다</div>
                           </button>
-                          <button className='wish-search' onClick={ () => addWish(selectedInfo.id) }>
+                          <button className='wish-search' onClick={ () => addWatched(selectedInfo.id) }>
                           <FontAwesomeIcon className='wish-logo' icon={faCheck} />
                           <div className="play-text">정주행 완료</div>
                         </button>

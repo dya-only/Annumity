@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,6 +15,11 @@ function Nav() {
   const [dropDownStatus, setDropDownStatus] = useState('dropdown-leave')
 
   const [AccName, setAccName] = useState(typeof window !== 'undefined' ? sessionStorage.getItem('Account') : null)
+
+  const navigate = useNavigate()
+  const toMyPage = () => {
+    navigate('/mypage')
+  }
 
   const handleFollow = () => {
     setScrollY(window.pageYOffset)
@@ -64,7 +69,7 @@ function Nav() {
           <div className={ signStatus }>{ AccName }</div>
           {/* <FontAwesomeIcon className={ iconStatusOut } icon={faRightFromBracket} /> */}
           <div className={ dropDownStatus }>
-            <div className="dropdown-mypage dropdown-item">마이페이지</div>
+            <div className="dropdown-mypage dropdown-item" onClick={ toMyPage }>마이페이지</div>
             <div className="dropdown-logout dropdown-item" onClick={() => { sessionStorage.setItem("Account", ""); setAccName(""); sessionStorage.setItem("Email", "") }}>로그아웃</div>
           </div>
         </button> }
