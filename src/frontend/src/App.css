@@ -1079,7 +1079,9 @@ body {
 
 .profile {
   padding-top: 100px;
+  margin-bottom: 100px;
   width: 100vw;
+  /* color: white; */
 
   display: flex;
   justify-content: center;
@@ -1088,7 +1090,8 @@ body {
 .profile_card {
   width: 50%;
   height: 300px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  /* backdrop-filter: blur(20px) brightness(60%); */
   border-radius: 10px;
 
   border: solid 1px;
@@ -1108,12 +1111,14 @@ body {
 }
 
 .profile_bg_img {
-  width: 50%;
+  width: 100%;
   height: 300px;
   border-radius: 10px;
   z-index: -10;
   position: absolute;
   object-fit: cover;
+
+  filter: brightness(60%);
 }
 
 .profile_text {
@@ -1130,4 +1135,43 @@ body {
   font-size: 18px;
   font-family: 'Noto Sans KR', sans-serif;
   
+}
+
+.section-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 50px;
+}
+
+.section-btn {
+  width: 100px;
+  height: 40px;
+  /* margin: 10px; */
+  color: black;
+  background-color: #F7F7F7;
+  cursor: pointer;
+
+  outline: 0;
+  border: 0;
+  border-bottom: solid #aaaaaa 2px;
+}
+
+.wish {
+  border-bottom: solid #2370ff 2px;
+}
+.watched {
+  border-bottom: solid #2370ff 2px;
+}
+
+.watched-contents {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.wish-contents {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
