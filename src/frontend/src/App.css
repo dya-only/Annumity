@@ -1074,7 +1074,8 @@ body {
 .mypage_main {
   width: 100vw;
   height: 100vh;
-  background-color: #F7F7F7;
+  /* background-color: #F7F7F7; */
+  background: white;
 }
 
 .profile {
@@ -1150,7 +1151,7 @@ body {
   height: 40px;
   /* margin: 10px; */
   color: black;
-  background-color: #F7F7F7;
+  background-color: white;
   cursor: pointer;
 
   outline: 0;
@@ -1158,20 +1159,16 @@ body {
   border-bottom: solid #aaaaaa 2px;
 }
 
-.wish {
+.myp_wish {
   border-bottom: solid #2370ff 2px;
 }
 .watched {
   border-bottom: solid #2370ff 2px;
 }
 
-.watched-contents {
-  width: 100vw;
+.section-contents {
+  width: 100%;
   display: flex;
   justify-content: center;
-}
-.wish-contents {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
 }
