@@ -296,6 +296,10 @@ function MyPage() {
                   <button key={idx} className="mypage-card" onClick={() => getChangeOnSearch(el.anime.name)}>
                     <img className='mypage-card-img' src={ el.anime.img || '' } alt='' />
                     <div className="mypage-card-title">{ el.anime.name }</div>
+
+                    {/* <button className='remove-btn' onClick={() => removeSearch(el.anime.id)}>
+                      <FontAwesomeIcon className='remove-btn-icon' icon={faEraser} />
+                    </button> */}
                   </button>
                 )) }
               </div>

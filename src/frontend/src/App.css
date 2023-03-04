@@ -1280,3 +1280,32 @@ body {
   font-size: 18px;
   font-family: 'Noto Sans KR', sans-serif;
 }
+
+.remove-btn {
+  margin: 5px;
+
+  outline: 0;
+  border: 0;
+  background: transparent;
+}
+
+.remove-btn-icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 50px;
+
+  cursor: pointer;
+
+  color: rgba(27, 27, 27, 0.822);
+
+  transition: all .3s;
+}
+.remove-btn-icon:hover {
+  width: 30px;
+  height: 30px;
+  margin-left: 50px;
+
+  color: rgba(255, 17, 17, 0.822);
+
+  transition: all .3s;
+}
