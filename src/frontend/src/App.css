@@ -899,6 +899,22 @@ body {
   backdrop-filter: blur(20px);
   cursor: pointer;
 }
+.remove-search {
+  outline: 0;
+  border: 0;
+
+  margin: 10px 10px 0px 0px;
+  border-radius: 8px;
+  padding: 0px 8px 0px 8px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff23b631;
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+}
 
 .search {
   width: 100vw;
@@ -1168,9 +1184,13 @@ body {
 
 .myp_wish {
   border-bottom: solid #2370ff 2px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .watched {
   border-bottom: solid #2370ff 2px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .section-contain {
@@ -1184,4 +1204,79 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.mypage-card {
+  width: 60%;
+  height: 120px;
+  border-radius: 20px;
+  margin: 20px;
+  background: white;
+  border: solid 1px;
+  border-color: #e8e8e9;
+
+  transition: all .5s;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  text-align: left;
+
+  outline: 0;
+}
+.mypage-card:hover {
+  width: 60%;
+  height: 120px;
+  border-radius: 20px;
+  margin: 20px;
+  background: white;
+  border: solid 1px;
+  border-color: #2370ff;
+
+  transition: all .5s;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  text-align: left;
+
+  outline: 0;
+}
+
+.mypage-card-img {
+  width: 30%;
+  height: 118px;
+  object-fit: cover;
+  border-radius: 20px 0px 0px 20px;
+  margin-left: -5px;
+  margin-right: 20px;
+  image-rendering: -webkit-optimize-contrast;
+
+  transition: all .5s;
+}
+.mypage-card-img:hover {
+  width: 30%;
+  height: 118px;
+  object-fit: cover;
+  border-radius: 20px 20px 20px 20px;
+  margin-left: -5px;
+  margin-right: 20px;
+  image-rendering: -webkit-optimize-contrast;
+
+  scale: 110%;
+  transition: all .3s;
+}
+
+.mypage-card-title {
+  z-index: 30;
+  color: black;
+  width: 300px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  margin-left: 10px;
+  font-size: 18px;
+  font-family: 'Noto Sans KR', sans-serif;
 }

@@ -39,23 +39,24 @@ router.route("/").get(async (req, res) => {
         res.status(200).json({ type: 'wish', message: 'exists' })
       }
     } else if (params.act == 'remove') {
-      if (isAlreadyAdded) {
-    
-        console.log('wish removed')
-        const _wishID = wishID.filter((e) => e !== params.id)
+      let _wishID: number[] = []
       
-        // let sql = `UPDATE user SET wish_id="${JSON.stringify(wishID)}" WHERE email="${rows[0].email}"`
-        
-        // db.run(sql, (e) => {
-        //   if (e) return console.error(e.message)
-        
-        // })
-
-        res.status(200).json({ type: 'wish', message: 'success' })
-      } else {
-        console.log('wish not exists')
-        res.status(200).json({ type: 'wish', message: 'not_exists' })
+      for (let i = 0; i < wishID.length; i++) {
+        if (wishID[i] != params.id) {
+          _wishID.push(wishID[i])
+        }
       }
+
+      console.log(_wishID)
+      
+      let sql = `UPDATE user SET wish_id="${JSON.stringify(_wishID)}" WHERE email="${rows[0].email}"`
+        
+      db.run(sql, (e) => {
+        if (e) return console.error(e.message)
+          
+      })
+
+      res.status(200).json({ type: 'wish remove', message: 'remove success' })
     }
       
   })

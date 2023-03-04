@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faPlus, faCheck, faEraser } from '@fortawesome/free-solid-svg-icons'
 import ReactPlayer from 'react-player'
 
 import Nav from './nav_default'
@@ -136,6 +136,18 @@ function MyPage() {
     setIsWishBtn('')
   }
 
+  const removeSearch = async (id: string) => {
+    const res = await fetch(`/api/db/wish?act=remove&id=${id}&email=${sessionStorage.getItem('Email')}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    const data = await res.json()
+    console.log(data.message)
+  }
+
   const getUserDB = async () => {
     const res = await fetch(`/api/db/view?email=${sessionStorage.getItem('Email')}`, {
       method: 'GET',
@@ -144,6 +156,8 @@ function MyPage() {
       },
     })
     const data = await res.json()
+
+    console.log(data.wishDATA[0])
 
     setWishList(data.wishDATA)
     setWatchedList(data.watchedDATA)
@@ -208,6 +222,11 @@ function MyPage() {
                             {/* <div className="laftel-logo"></div> */}
                             <img className='laftel-logo' src={`images/laftel.png`} alt="" />
                             <div className="play-text">보러가기</div>
+                          </button>
+                          <button className='remove-search' onClick={() => removeSearch(selectedInfo.id)}>
+                            {/* <div className="laftel-logo"></div> */}
+                            <FontAwesomeIcon className='wish-logo' icon={faEraser} />
+                            <div className="play-text">리스트에서 삭제</div>
                           </button>
                         </div>
                       </div>
@@ -274,11 +293,9 @@ function MyPage() {
             <div className="section-contain">
               <div className="section-contents">
                 { wishList.map((el: any, idx: number) => (
-                  <button key={idx} className="search-card" onClick={() => getChangeOnSearch(el.anime.name)}>
-                    <img className='search-card-img' src={ el.anime.img || '' } alt='' />
-                    <div className="text-contain">
-                      <div className="search-card-title">{ el.anime.name }</div>
-                    </div>
+                  <button key={idx} className="mypage-card" onClick={() => getChangeOnSearch(el.anime.name)}>
+                    <img className='mypage-card-img' src={ el.anime.img || '' } alt='' />
+                    <div className="mypage-card-title">{ el.anime.name }</div>
                   </button>
                 )) }
               </div>
@@ -287,13 +304,11 @@ function MyPage() {
             ( infoSection == 'watched' ?
               <div className="section-contents">
                 { watchedList.map((el: any, idx: number) => (
-                <button key={idx} className="search-card" onClick={() => getChangeOnSearch(el.anime.name)}>
-                  <img className='search-card-img' src={ el.anime.img || '' } alt='' />
-                  <div className="text-contain">
-                    <div className="search-card-title">{ el.anime.name }</div>
-                  </div>
+                  <button key={idx} className="mypage-card" onClick={() => getChangeOnSearch(el.anime.name)}>
+                  <img className='mypage-card-img' src={ el.anime.img || '' } alt='' />
+                  <div className="mypage-card-title">{ el.anime.name }</div>
                 </button>
-              )) }
+                )) }
               </div>
             : <div className="section-contents">버튼을 클릭해주세요.</div>
             )
