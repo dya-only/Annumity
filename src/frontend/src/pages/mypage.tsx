@@ -155,7 +155,7 @@ function MyPage() {
     setWeek(WeekDay[day.getDay()])
 
     getUserDB()
-    setTimeout(() => setPageLoading(false), 1000);
+    setTimeout(() => setPageLoading(false), 3000);
   }, [])
 
   return (
@@ -268,32 +268,39 @@ function MyPage() {
           <button className={`section-btn ${isWishBtn}`} onClick={WishBtnEvent}>보고싶다</button>
           <button className={`section-btn ${isWatchedBtn}`} onClick={WatchedBtnEvent}>정주행완료</button>
         </div>
-        { infoSection == 'wish' ?
-          <div className="section-contents">
-            { wishList.map((el: any, idx: number) => (
-              <button key={idx} className="search-card" onClick={() => getChangeOnSearch(el.anime.name)}>
-                <img className='search-card-img' src={ el.anime.img || '' } alt='' />
-                <div className="text-contain">
-                  <div className="search-card-title">{ el.anime.name }</div>
-                </div>
-              </button>
-            )) }
-          </div>
-        :
-          ( infoSection == 'watched' ?
-            <div className="section-contents">
-              { watchedList.map((el: any, idx: number) => (
-              <button key={idx} className="search-card" onClick={() => getChangeOnSearch(el.anime.name)}>
-                <img className='search-card-img' src={ el.anime.img || '' } alt='' />
-                <div className="text-contain">
-                  <div className="search-card-title">{ el.anime.name }</div>
-                </div>
-              </button>
-            )) }
+
+        { !pageLoading ?
+          ( infoSection == 'wish' ?
+            <div className="section-contain">
+              <div className="section-contents">
+                { wishList.map((el: any, idx: number) => (
+                  <button key={idx} className="search-card" onClick={() => getChangeOnSearch(el.anime.name)}>
+                    <img className='search-card-img' src={ el.anime.img || '' } alt='' />
+                    <div className="text-contain">
+                      <div className="search-card-title">{ el.anime.name }</div>
+                    </div>
+                  </button>
+                )) }
+              </div>
             </div>
-          : <div className="section-contents">버튼을 클릭해주세요.</div>
+          :
+            ( infoSection == 'watched' ?
+              <div className="section-contents">
+                { watchedList.map((el: any, idx: number) => (
+                <button key={idx} className="search-card" onClick={() => getChangeOnSearch(el.anime.name)}>
+                  <img className='search-card-img' src={ el.anime.img || '' } alt='' />
+                  <div className="text-contain">
+                    <div className="search-card-title">{ el.anime.name }</div>
+                  </div>
+                </button>
+              )) }
+              </div>
+            : <div className="section-contents">버튼을 클릭해주세요.</div>
+            )
           )
-        }
+        : <div className="myp_loading">
+            <img className='spinner' src={`images/logo.png`} alt="" />
+          </div> }
       </main>
     </Fragment>
   )

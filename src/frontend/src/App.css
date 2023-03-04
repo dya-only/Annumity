@@ -667,6 +667,13 @@ body {
   background: white;
   z-index: 60;
 }
+.myp_loading {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* .whitelogo {
   filter: invert();
 } */
@@ -1166,8 +1173,14 @@ body {
   border-bottom: solid #2370ff 2px;
 }
 
+.section-contain {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
 .section-contents {
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
