@@ -34,7 +34,7 @@ function Nav() {
     } else if (ScrollY > 500) {
       setNavStatus("navtwo")
     } else {
-      setNavStatus("navinit")  // use scroll down view
+      setNavStatus("navinit")
       setLogoStatus("logoinit")
       setTitleStatus("nav-title-white")
       setIconStatus("icon-white")
