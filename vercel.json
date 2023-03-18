@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "ec2-3-35-170-156.ap-northeast-2.compute.amazonaws.com/:path*"
+    },
+    {
+      "source": "/api/:path*/",
+      "destination": "ec2-3-35-170-156.ap-northeast-2.compute.amazonaws.com/:path*/"
+    }
+  ]
+}
