@@ -24,7 +24,7 @@ function Login() {
         },
       })
       .then(async (res: { data: { name: string, email: string } }) => {
-        await axios.get(`http://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/db/create?email=${res.data.email}&name=${res.data.name}`)
+        await axios.get(`https://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/db/create?email=${res.data.email}&name=${res.data.name}`)
 
         alert("환영합니다, " + res.data.name + "님!")
         sessionStorage.setItem('Account', res.data.name)
