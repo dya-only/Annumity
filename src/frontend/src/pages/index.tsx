@@ -75,7 +75,7 @@ function Index() {
       setWindowLoad(false)
     }, 1000)
 
-    const res = await fetch(`https://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/info?name=${PropTitle}`, {
+    const res = await fetch(`ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/info?name=${PropTitle}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function Index() {
       setWindowLoad(false)
     }, 2000)
 
-    const res = await fetch(`https://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/search?name=${searchValue2}`, {
+    const res = await fetch(`ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/search?name=${searchValue2}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -163,7 +163,7 @@ function Index() {
 
   const addWish = async (id: string) => {
     if (sessionStorage.getItem('Email') != '' && sessionStorage.getItem('Email') != null) {
-      const res = await fetch(`https://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/db/wish?act=add&id=${id}&email=${sessionStorage.getItem('Email')}`, {
+      const res = await fetch(`ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/db/wish?act=add&id=${id}&email=${sessionStorage.getItem('Email')}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +186,7 @@ function Index() {
 
   const addWatched = async (id: string) => {
     if (sessionStorage.getItem('Email') != '' && sessionStorage.getItem('Email') != null) {
-      const res = await fetch(`https://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/db/watched?act=add&id=${id}&email=${sessionStorage.getItem('Email')}`, {
+      const res = await fetch(`ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/db/watched?act=add&id=${id}&email=${sessionStorage.getItem('Email')}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
@@ -208,7 +208,7 @@ function Index() {
   }
 
   const getDaily = async () => {
-    const res = await fetch('https://ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/daily', {
+    const res = await fetch('ec2-54-180-133-86.ap-northeast-2.compute.amazonaws.com/api/daily', {
       method: 'GET',
       headers: {
           "Content-Type": "application/json",
