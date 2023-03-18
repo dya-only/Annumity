@@ -24,7 +24,7 @@ function Login() {
         },
       })
       .then(async (res: { data: { name: string, email: string } }) => {
-        await axios.get(`http://localhost:3000/api/db/create?email=${res.data.email}&name=${res.data.name}`)
+        await axios.get(`/api/db/create?email=${res.data.email}&name=${res.data.name}`)
 
         alert("환영합니다, " + res.data.name + "님!")
         sessionStorage.setItem('Account', res.data.name)
