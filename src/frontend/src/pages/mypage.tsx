@@ -51,7 +51,7 @@ function MyPage() {
       setWindowLoad(false)
     }, 1000)
 
-    const res = await fetch(`/api/info?name=${PropTitle}`, {
+    const res = await fetch(`http://ec2-3-35-170-156.ap-northeast-2.compute.amazonaws.com/api/info?name=${PropTitle}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ function MyPage() {
       setWindowLoad(false)
     }, 2000)
 
-    const res = await fetch(`/api/search?name=${searchValue2}`, {
+    const res = await fetch(`http://ec2-3-35-170-156.ap-northeast-2.compute.amazonaws.com/api/search?name=${searchValue2}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -137,7 +137,7 @@ function MyPage() {
   }
 
   const removeSearch = async (id: string) => {
-    const res = await fetch(`/api/db/wish?act=remove&id=${id}&email=${sessionStorage.getItem('Email')}`, {
+    const res = await fetch(`http://ec2-3-35-170-156.ap-northeast-2.compute.amazonaws.com/api/db/wish?act=remove&id=${id}&email=${sessionStorage.getItem('Email')}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -149,7 +149,7 @@ function MyPage() {
   }
 
   const getUserDB = async () => {
-    const res = await fetch(`/api/db/view?email=${sessionStorage.getItem('Email')}`, {
+    const res = await fetch(`http://ec2-3-35-170-156.ap-northeast-2.compute.amazonaws.com/api/db/view?email=${sessionStorage.getItem('Email')}`, {
       method: 'GET',
       headers: {
           "Content-Type": "application/json",
