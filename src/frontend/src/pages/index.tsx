@@ -8,6 +8,7 @@ import Nav from './nav'
 import Loading from './loading'
 
 function Index() {
+  const log = console.log
   const navigate = useNavigate()
 
   const [daily, setDaily] = useState({
@@ -215,6 +216,7 @@ function Index() {
       },
     })
     const data = await res.json()
+    log(data)
     setDaily({
       data: data.data,
       images: data.imgs,
