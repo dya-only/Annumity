@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://ec2-3-36-52-143.ap-northeast-2.compute.amazonaws.com:3000',
+        target: '//ec2-3-36-52-143.ap-northeast-2.compute.amazonaws.com:3000',
         changeOrigin: true,
         secure: false,      
         ws: true,
