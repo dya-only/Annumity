@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:path(.*)", "destination": "http://ec2-54-180-138-54.ap-northeast-2.compute.amazonaws.com:3000/api/:path" },
+    { "source": "/api/:path(.*)", "destination": "http://ec2-54-180-138-54.ap-northeast-2.compute.amazonaws.com:3000/:path" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
