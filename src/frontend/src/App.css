@@ -1413,7 +1413,7 @@ body {
     visibility: hidden;
   }
   .m-search-main-img {
-    visibility: visible;
+    display: block;
     position: absolute;
     margin-left: -10px;
     width: 100vw;
