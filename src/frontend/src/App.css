@@ -1310,7 +1310,7 @@ body {
   transition: all .3s;
 }
 .m-search-main-img {
-  visibility: hidden;
+  display: none;
 }
 
 @media only screen and (min-width:200px) and (max-width:480px) {
